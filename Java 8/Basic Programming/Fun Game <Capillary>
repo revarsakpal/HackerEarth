@@ -1,0 +1,119 @@
+Problem
+ and 
+  are playing a game. In this game, both of them are initially provided with a list of 
+ numbers. (Both have the same list but their own copy).
+
+Now, they both have a different strategy to play the game. 
+ picks the element from start of his list. 
+ picks from the end of his list.
+
+You need to generate the result in form of an output list.
+
+Method to be followed at each step to build the output list is:
+
+If the number picked by 
+ is bigger than 
+ then this step's output is 
+ . 
+ removes the number that was picked from their list.
+If the number picked by 
+ is smaller than 
+ then this step's output is 
+ . 
+ removes the number that was picked from their list.
+If both have the same number then this step's output is 
+ . Both 
+ and 
+  remove the number that was picked from their list.
+This game ends when at least one of them has no more elements to be picked i.e. when the list gets empty.
+
+Output the built output list.
+  
+
+Input format:
+
+First line consists of a number 
+ , size of the list provided.
+Next line consists of 
+ numbers separated by space.
+
+
+Output format:
+
+Output the required output list.
+
+
+Constraints:
+
+
+ 
+
+Sample Input
+3
+1 2 3
+Sample Output
+2 2 0
+
+
+
+Solution
+
+
+import java.io.*;
+import java.util.*;
+
+
+public class TestClass {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        PrintWriter wr = new PrintWriter(System.out);
+         int n = Integer.parseInt(br.readLine().trim());
+         String[] arr_arr = br.readLine().split(" ");
+         int[] arr = new int[n];
+         for(int i_arr=0; i_arr<arr_arr.length; i_arr++)
+         {
+         	arr[i_arr] = Integer.parseInt(arr_arr[i_arr]);
+         }
+
+         int[] out_ =funGame(arr);
+         System.out.print(out_[0]);
+         for(int i_out_=1; i_out_<out_.length; i_out_++)
+         {
+         	System.out.print(" " + out_[i_out_]);
+         }
+
+         wr.close();
+         br.close();
+    }
+    static int[] funGame(int[] arr){
+        Queue<Integer> q=new LinkedList<>();
+     Stack<Integer> stk=new Stack<>();
+     
+     int []out=new int[arr.length];
+     int k=0;
+    for(int i=0;i<arr.length;i++){
+        stk.push(arr[i]);
+        q.add(arr[i]);
+    }
+     
+    while((!q.isEmpty()) && (!stk.isEmpty())){
+        if(q.peek()>stk.peek()){
+            out[k]=1;
+            k++;
+            q.poll();
+
+        }
+        else if(q.peek()<stk.peek()){
+            out[k]=2;
+            k++;
+            stk.pop();
+        }
+        else if(q.peek()==stk.peek()){
+            out[k]=0;
+            k++;
+            stk.pop();q.poll();
+        }
+    }
+    return out;
+}
+}

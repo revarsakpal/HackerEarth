@@ -1,0 +1,66 @@
+Problem
+You are given an array 
+ consisting of 
+ non-negative integers. Find out the minimum number 
+ such that there exists a non-empty subset of 
+ for which the bitwise OR of all its elements is equal to 
+.
+
+Input format
+
+The first line contains an integer 
+ (
+) denoting the number of test cases.
+The first line of each test case contains an integer 
+ denoting the number of elements in array 
+.
+The second line of each test case contains 
+ space-separated integers of array 
+.
+Note: It is guaranteed that sum of 
+ over all test cases is less than or equal to 
+.
+
+Output format
+
+For each test case, print a line containing the minimum possible value of 
+.
+
+Constraints
+
+
+
+
+Sum of 
+ over all test cases is less than or equal to 
+
+Solution
+
+
+
+
+import java.util.*;
+class TestClass {
+    public static void main(String[] args) {
+		
+		Scanner sc=new Scanner(System.in);
+		int n=sc.nextInt();
+		
+		while(n>0) {
+		
+			int k=sc.nextInt();
+			int arr[]=new int[k];
+			for(int i=0;i<arr.length;i++) {
+				arr[i]=sc.nextInt();
+			}
+			Arrays.sort(arr);
+			System.out.println(arr[0]);
+			n--;
+		}
+		
+	}
+}
+
+
+
+
